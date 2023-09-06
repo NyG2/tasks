@@ -6,6 +6,7 @@ function App(): JSX.Element {
         /*Nyllise Graham*/
         <div className="App">
             <header className="App-header">
+                <h2 style={{ color: "gray" }}>Sonic Boom!</h2>
                 UD CISC275 with React Hooks and TypeScript
             </header>
             <p>
