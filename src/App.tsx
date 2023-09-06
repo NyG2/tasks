@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import SonicBoom from "../src/SonicBoom.jpeg";
 
 function App(): JSX.Element {
     return (
@@ -12,7 +13,13 @@ function App(): JSX.Element {
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload. Hello World
+                <ul>
+                    <li>Sonic</li>
+                    <li>Guile</li>
+                    <li>💥💥💥</li>
+                </ul>
             </p>
+            <img src={SonicBoom} width="300" alt="SB" />
         </div>
     );
 }
