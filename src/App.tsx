@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { Button } from "react-bootstrap";
 import SonicBoom from "../src/SonicBoom.jpeg";
 
 function App(): JSX.Element {
@@ -12,7 +13,10 @@ function App(): JSX.Element {
             </header>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload. Hello World
+                automatically reload.
+                <Button onClick={() => console.log("Hello World!")}>
+                    Log Hello World
+                </Button>
                 <ul>
                     <li>Sonic</li>
                     <li>Guile</li>
