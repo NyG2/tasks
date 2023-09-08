@@ -26,8 +26,24 @@ function App(): JSX.Element {
             <img src={SonicBoom} width="300" alt="SB" />
             <Container>
                 <Row>
-                    <Col>Well ➡️ </Col>
-                    <Col>hello there ^^</Col>
+                    <Col>
+                        <div
+                            style={{
+                                backgroundColor: "red",
+                                width: 200,
+                                height: 300
+                            }}
+                        ></div>
+                    </Col>
+                    <Col>
+                        <div
+                            style={{
+                                backgroundColor: "red",
+                                width: 200,
+                                height: 300
+                            }}
+                        ></div>
+                    </Col>
                 </Row>
             </Container>
         </div>
