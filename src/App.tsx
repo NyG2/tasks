@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Button } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import SonicBoom from "../src/SonicBoom.jpeg";
 
 function App(): JSX.Element {
@@ -24,6 +24,12 @@ function App(): JSX.Element {
                 </ul>
             </p>
             <img src={SonicBoom} width="300" alt="SB" />
+            <Container>
+                <Row>
+                    <Col>Well ➡️ </Col>
+                    <Col>hello there ^^</Col>
+                </Row>
+            </Container>
         </div>
     );
 }
