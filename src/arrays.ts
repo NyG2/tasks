@@ -76,7 +76,14 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    const RGB = colors.every(
+        (color: string): boolean =>
+            color === "red" ||
+            color === "blue" ||
+            color === "green" ||
+            color === ""
+    );
+    return RGB;
 }
 
 /**
@@ -87,7 +94,14 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    let sum =
+        addends.reduce((total: number, num: number) => total + num, 0) +
+        "=" +
+        addends.join("+");
+    if (addends.length === 0) {
+        sum = "0=0";
+    }
+    return sum;
 }
 
 /**
@@ -100,5 +114,22 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    let foundNegative = false;
+    let sum = 0;
+
+    return values
+        .map((num) => {
+            if (foundNegative) {
+                return num;
+            }
+
+            if (num < 0) {
+                foundNegative = true;
+                return sum;
+            }
+
+            sum += num;
+            return num;
+        })
+        .concat(foundNegative ? [] : [sum]);
 }
