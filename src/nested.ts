@@ -71,7 +71,8 @@ export function sumPoints(questions: Question[]): number {
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
-    return 0;
+    const Spub = questions.filter((pubs: Question) => pubs.published);
+    return Spub.length;
 }
 
 /***
@@ -92,7 +93,20 @@ id,name,options,points,published
  * Check the unit tests for more examples!
  */
 export function toCSV(questions: Question[]): string {
-    return "";
+    const CSV = questions.map(
+        (f: Question): string =>
+            f.id.toString() +
+            "," +
+            f.name +
+            "," +
+            f.options.length.toString() +
+            "," +
+            f.points.toString() +
+            "," +
+            f.published.toString()
+    );
+    const CSVstring = CSV.join("\n");
+    return "id,name,options,points,published\n" + CSVstring;
 }
 
 /**
@@ -101,7 +115,16 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
-    return [];
+    const ans: Answer[] = questions.map((aws: Question) => {
+        const a: Answer = {
+            questionId: aws.id,
+            text: "",
+            submitted: false,
+            correct: false
+        };
+        return a;
+    });
+    return ans;
 }
 
 /***
@@ -109,7 +132,13 @@ export function makeAnswers(questions: Question[]): Answer[] {
  * each question is now published, regardless of its previous published status.
  */
 export function publishAll(questions: Question[]): Question[] {
-    return [];
+    const deepC = questions.map((de: Question): Question => {
+        return {
+            ...de,
+            published: true
+        };
+    });
+    return deepC;
 }
 
 /***
@@ -117,7 +146,11 @@ export function publishAll(questions: Question[]): Question[] {
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
-    return false;
+    const firstQ = questions[0];
+    const same = questions.every(
+        (s: Question): boolean => s.type === firstQ.type
+    );
+    return same;
 }
 
 /***
