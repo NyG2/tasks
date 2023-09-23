@@ -6,7 +6,9 @@ import { Question, QuestionType } from "./interfaces/question";
  * that are `published`.
  */
 export function getPublishedQuestions(questions: Question[]): Question[] {
-    return [];
+    const publishedQ = [...questions];
+    const filterQ = publishedQ.filter((qs: Question): boolean => qs.published);
+    return filterQ;
 }
 
 /**
@@ -15,7 +17,12 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    return [];
+    const EQ = [...questions]; // Shallow copy would have been fine as well, thought it was needed.
+    const filterEQ = EQ.filter(
+        (fq: Question) =>
+            fq.body !== "" || fq.expected !== "" || fq.options.length > 0
+    );
+    return filterEQ;
 }
 
 /***
@@ -26,7 +33,10 @@ export function findQuestion(
     questions: Question[],
     id: number
 ): Question | null {
-    return null;
+    const foundQuestion = questions.find(
+        (question: Question) => question.id === id
+    );
+    return foundQuestion || null;
 }
 
 /**
@@ -34,7 +44,9 @@ export function findQuestion(
  * with the given `id`.
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
-    return [];
+    const copyRQ = [...questions];
+    const filterRQ = copyRQ.filter((rq: Question) => rq.id !== id);
+    return filterRQ;
 }
 
 /***
@@ -42,14 +54,17 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-    return [];
+    const GN = questions.map((gn: Question): string => gn.name);
+    return GN;
 }
 
 /***
  * Consumes an array of questions and returns the sum total of all their points added together.
  */
 export function sumPoints(questions: Question[]): number {
-    return 0;
+    const p = questions.map((pts: Question): number => pts.points);
+    const sum = p.reduce((total: number, num: number) => total + num, 0);
+    return sum;
 }
 
 /***
