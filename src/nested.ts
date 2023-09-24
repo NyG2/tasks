@@ -1,6 +1,6 @@
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
-import { makeBlankQuestion } from "./objects";
+import { duplicateQuestion, makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -72,8 +72,15 @@ export function sumPoints(questions: Question[]): number {
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
-    const Spub = questions.filter((pubs: Question) => pubs.published);
-    return Spub.length;
+    let totalPoints = 0;
+
+    questions.forEach((question: Question) => {
+        if (question.published) {
+            totalPoints += question.points;
+        }
+    });
+
+    return totalPoints;
 }
 
 /***
@@ -180,7 +187,15 @@ export function renameQuestionById(
     targetId: number,
     newName: string
 ): Question[] {
-    return [];
+    const newID = questions.map((id: Question): Question => {
+        if (id.id === targetId) {
+            return { ...id, name: newName };
+        } else {
+            return id;
+        }
+    });
+    return newID;
+    //Example of deep copy because we only want the name change that has the targetedID
 }
 
 /***
@@ -195,7 +210,19 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType
 ): Question[] {
-    return [];
+    return questions.map((question: Question): Question => {
+        if (question.id === targetId) {
+            const updatedQuestion = { ...question, type: newQuestionType };
+
+            if (newQuestionType !== "multiple_choice_question") {
+                updatedQuestion.options = [];
+            }
+
+            return updatedQuestion;
+        } else {
+            return question;
+        }
+    });
 }
 
 /**
@@ -214,7 +241,27 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    return [];
+    const t = questions.map((question: Question): Question => {
+        if (question.id === targetId) {
+            if (targetOptionIndex === -1) {
+                return {
+                    ...question,
+                    options: [...question.options, newOption]
+                };
+            } else if (
+                targetOptionIndex >= 0 &&
+                targetOptionIndex < question.options.length
+            ) {
+                const updatedOptions = [...question.options];
+                updatedOptions[targetOptionIndex] = newOption;
+
+                return { ...question, options: updatedOptions };
+            }
+        }
+        return question;
+    });
+
+    return t;
 }
 
 /***
@@ -228,5 +275,12 @@ export function duplicateQuestionInArray(
     targetId: number,
     newId: number
 ): Question[] {
-    return [];
+    const duplicateQ = questions.flatMap((dup: Question) => {
+        if (dup.id === targetId) {
+            const newQ = duplicateQuestion(newId, dup);
+            return [dup, newQ];
+        }
+        return [dup];
+    });
+    return duplicateQ;
 }
