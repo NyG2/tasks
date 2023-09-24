@@ -11,7 +11,7 @@ function App(): JSX.Element {
                 <h2 style={{ color: "gray" }}>Sonic Boom!</h2>
                 UD CISC275 with React Hooks and TypeScript
             </header>
-            <p>
+            <div>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload.
                 <Button onClick={() => console.log("Hello World!")}>
@@ -22,7 +22,7 @@ function App(): JSX.Element {
                     <li>Guile</li>
                     <li>💥💥💥</li>
                 </ul>
-            </p>
+            </div>
             <img src={SonicBoom} width="300" alt="SB" />
             <Container>
                 <Row>
