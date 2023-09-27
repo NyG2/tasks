@@ -9,16 +9,14 @@ import { Counter } from "./components/Counter";
 
 function App(): JSX.Element {
     return (
-        /*Nyllise Graham*/
         <div className="App">
-            <header className="App-header">
-                <h2 style={{ color: "gray" }}>Sonic Boom!</h2>
-                UD CISC275 with React Hooks and TypeScript
-            </header>
+            <header className="App-header"></header>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload.
             </p>
+            <Counter></Counter>, <RevealAnswer></RevealAnswer>
+            <ChangeType></ChangeType>
         </div>
     );
 }
