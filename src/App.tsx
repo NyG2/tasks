@@ -1,7 +1,11 @@
 import React from "react";
 import "./App.css";
-import { Button, Col, Container, Row } from "react-bootstrap";
-import SonicBoom from "../src/SonicBoom.jpeg";
+import { ChangeType } from "./components/ChangeType";
+import { RevealAnswer } from "./components/RevealAnswer";
+import { StartAttempt } from "./components/StartAttempt";
+import { TwoDice } from "./components/TwoDice";
+import { CycleHoliday } from "./components/CycleHoliday";
+import { Counter } from "./components/Counter";
 
 function App(): JSX.Element {
     return (
@@ -11,41 +15,10 @@ function App(): JSX.Element {
                 <h2 style={{ color: "gray" }}>Sonic Boom!</h2>
                 UD CISC275 with React Hooks and TypeScript
             </header>
-            <div>
+            <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload.
-                <Button onClick={() => console.log("Hello World!")}>
-                    Log Hello World
-                </Button>
-                <ul>
-                    <li>Sonic</li>
-                    <li>Guile</li>
-                    <li>💥💥💥</li>
-                </ul>
-            </div>
-            <img src={SonicBoom} width="300" alt="SB" />
-            <Container>
-                <Row>
-                    <Col>
-                        <div
-                            style={{
-                                backgroundColor: "red",
-                                width: 200,
-                                height: 300
-                            }}
-                        ></div>
-                    </Col>
-                    <Col>
-                        <div
-                            style={{
-                                backgroundColor: "red",
-                                width: 200,
-                                height: 300
-                            }}
-                        ></div>
-                    </Col>
-                </Row>
-            </Container>
+            </p>
         </div>
     );
 }
