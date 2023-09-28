@@ -17,6 +17,9 @@ function App(): JSX.Element {
             </p>
             <Counter></Counter>, <RevealAnswer></RevealAnswer>
             <ChangeType></ChangeType>
+            <div>
+                <StartAttempt></StartAttempt>
+            </div>
         </div>
     );
 }

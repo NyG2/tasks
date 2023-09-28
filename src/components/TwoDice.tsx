@@ -12,5 +12,7 @@ export function d6(): number {
 }
 
 export function TwoDice(): JSX.Element {
+    const [d1, setDice1] = useState<number>(d6); // Both dices will roll a random number.
+    const [d2, setDice2] = useState<number>(d6);
     return <div>Two Dice</div>;
 }
