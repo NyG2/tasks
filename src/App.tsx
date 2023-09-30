@@ -11,14 +11,24 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header"></header>
+            <div>CISC275</div>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload.
             </p>
-            <Counter></Counter>, <RevealAnswer></RevealAnswer>
+            <Counter></Counter>
+            <RevealAnswer></RevealAnswer>
+            ____________________________________________________
             <ChangeType></ChangeType>
+            ____________________________________________________
             <div>
                 <StartAttempt></StartAttempt>
+                ____________________________________________________
+                <TwoDice></TwoDice>
+                ____________________________________________________
+            </div>
+            <div>
+                <CycleHoliday></CycleHoliday>
             </div>
         </div>
     );
