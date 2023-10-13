@@ -1,5 +1,5 @@
-/*import React from "react";
-import { render, screen } from "@testing-library/react";
+import React from "react";
+import { render } from "@testing-library/react";
 import { Quizzer } from "./Quizzer";
 
 describe("Quizzer Tests", () => {
@@ -10,4 +10,4 @@ describe("Quizzer Tests", () => {
         // Up to you to decide what your tests are!
         // Add more tests, more components, more test files!
     });
-});*/
+});
